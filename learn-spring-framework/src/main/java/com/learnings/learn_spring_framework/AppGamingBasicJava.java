@@ -6,7 +6,7 @@ public class AppGamingBasicJava {
 
         var marioGame = new MarioGame();
         var supeContraGame = new SuperContraGame();
-        var gameRunner = new GameRunner(supeContraGame);
+        var gameRunner = new GameRunner(marioGame);
         gameRunner.run();
     }
 }
