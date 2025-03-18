@@ -1,0 +1,17 @@
+package com.learnings.learn_spring_framework;
+
+public class GameRunner {
+    // private MarioGame game;
+    private SuperContraGame game;
+    public GameRunner(SuperContraGame game) {
+        this.game = game;
+    }
+
+    public void run() {
+        System.out.println("running game " + game);
+        this.game.up();
+        this.game.right();
+        this.game.down();
+        this.game.left();
+    }
+}
