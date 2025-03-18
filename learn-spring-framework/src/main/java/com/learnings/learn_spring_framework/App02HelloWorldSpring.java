@@ -12,10 +12,22 @@ public class App02HelloWorldSpring {
         // inside this we also created beans with @Bean config
 
         //retrieving beans
-        Object name = context.getBean("name");
+        Object name = context.getBean("myName");
         System.out.println(name);
 
         Object age = context.getBean("age");
         System.out.println(age);
+
+        Object person = context.getBean("person");
+        System.out.println(person);
+
+        Object person2 = context.getBean("person2");
+        System.out.println(person2);
+
+        Object person3 = context.getBean(Person.class);
+        System.out.println(person3);
+
+        Object address = context.getBean(Address.class);
+        System.out.println(address);
     }
 }
