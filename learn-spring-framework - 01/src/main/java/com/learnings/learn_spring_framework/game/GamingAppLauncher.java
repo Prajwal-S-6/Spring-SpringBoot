@@ -1,6 +1,5 @@
-package com.learnings.learn_spring_framework;
+package com.learnings.learn_spring_framework.game;
 
-import com.learnings.learn_spring_framework.game.GamingConsole;
 import org.springframework.context.annotation.*;
 
 
@@ -10,12 +9,11 @@ import org.springframework.context.annotation.*;
 // if it was in different package outside of this then we need multiple @ComponentScan
 //@ComponentScan("com.learnings.learn_spring_framework.game")
 @ComponentScan("com.learnings.learn_spring_framework")
-public class App03GamingSpringBean {
+public class GamingAppLauncher {
 
     public static void main(String[] args) {
 
-        try(var context = new AnnotationConfigApplicationContext(App03GamingSpringBean.class)) {
-
+        try(var context = new AnnotationConfigApplicationContext(GamingAppLauncher.class)) {
 
             var gameRunner = (GameRunner) context.getBean(GameRunner.class);
             gameRunner.run();

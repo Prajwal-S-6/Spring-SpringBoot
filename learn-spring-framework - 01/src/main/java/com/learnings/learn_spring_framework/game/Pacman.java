@@ -1,7 +1,11 @@
 package com.learnings.learn_spring_framework.game;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Component
+@Primary
 public class Pacman implements GamingConsole {
     @Override
     public void up() {
