@@ -1,4 +1,5 @@
-package com.learnings.learn_spring_framework;
+package com.learnings.learn_spring.helloworld;
+
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

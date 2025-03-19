@@ -1,7 +1,6 @@
-package com.learnings.learn_spring_framework;
+package com.learnings.learn_spring.helloworld;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
