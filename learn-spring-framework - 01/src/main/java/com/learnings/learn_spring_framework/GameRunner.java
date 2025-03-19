@@ -1,5 +1,7 @@
 package com.learnings.learn_spring_framework;
 
+import com.learnings.learn_spring_framework.game.GamingConsole;
+
 public class GameRunner {
     // private MarioGame game;
     private GamingConsole game;

@@ -1,5 +1,9 @@
 package com.learnings.learn_spring_framework;
 
+import com.learnings.learn_spring_framework.game.GamingConsole;
+import com.learnings.learn_spring_framework.game.MarioGame;
+import com.learnings.learn_spring_framework.game.Pacman;
+import com.learnings.learn_spring_framework.game.SuperContraGame;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

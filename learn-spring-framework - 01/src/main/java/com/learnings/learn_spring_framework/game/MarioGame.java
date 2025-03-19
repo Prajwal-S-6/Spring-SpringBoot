@@ -1,4 +1,4 @@
-package com.learnings.learn_spring_framework;
+package com.learnings.learn_spring_framework.game;
 
 public class MarioGame implements GamingConsole {
 
