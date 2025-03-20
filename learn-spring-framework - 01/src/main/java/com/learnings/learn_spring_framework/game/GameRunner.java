@@ -8,20 +8,20 @@ import org.springframework.stereotype.Component;
 public class GameRunner {
 
     // always wires supercontrgame
-    @Autowired
-    @Qualifier("SuperContraGameQualifier")
-    private GamingConsole game;
+//    @Autowired
+//    @Qualifier("SuperContraGameQualifier")
+//    private GamingConsole game;
 
     // wires bean of type GamingConsole if only one @Component;
     // else class with @Component & @Primary
 //    @Autowired
-//    private GamingConsole game;
+    private GamingConsole game;
 
 
     // OR wiring using constructor
-//    public GameRunner(@Qualifier("SuperContraGameQualifier") GamingConsole game) {
-//        this.game = game;
-//    }
+    public GameRunner(@Qualifier("SuperContraGameQualifier") GamingConsole game) {
+        this.game = game;
+    }
 
 
     public void run() {
