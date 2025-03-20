@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component
+@Service
 @ComponentScan
 public class BusinessCalculationService {
     // -- Field @Autowired based DI--

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Repository
 @Primary
 @Qualifier("MySQLDbDataServiceQualifier")
 public class MySQLDbDataService implements DbDataService {
