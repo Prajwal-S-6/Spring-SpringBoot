@@ -8,14 +8,18 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping("/spring")
 public class CourseController {
 
-    @RequestMapping("/courses")
-    // @GetMapping("/courses")  // this also works
+    @GetMapping("/courses")
+    // url to retrieve will be /spring/courses
     public List<Course> retrieveAllCourses() {
         return Arrays.asList(
                 new Course(1, "Learn AWS", "Udemy"),
-                new Course(1, "Learn Devops", "Udemy")
+                new Course(2, "Learn Devops", "Udemy"),
+                new Course(3, "Learn Azure", "Udemy"),
+                new Course(4, "Learn Kubernetes", "Udemy"),
+                new Course(5, "Learn Docker", "Udemy")
         );
     }
 
