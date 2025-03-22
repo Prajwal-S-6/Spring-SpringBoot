@@ -26,15 +26,15 @@ public class CourseJdbcRepository {
             """;
 
     public void insert(Course course) {
-        jdbcTemplate.update(INSERT_QUERY, course.id(), course.name(), course.author());
+        jdbcTemplate.update(INSERT_QUERY, course.getId(), course.getName(), course.getAuthor());
     }
 
     public void delete(long id) {
         jdbcTemplate.update(DELETE_QUERY, id);
     }
 
-//    public Course select(long id) {
-//        return jdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<Course>(), id);
-//        // ResultSet -> Bean using Row Mapper(BeanPropertyRowMapper<>())
-//    }
+    public Course select(long id) {
+        return jdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<Course>(Course.class), id);
+        // ResultSet -> Bean using Row Mapper(BeanPropertyRowMapper<>())
+    }
 }

@@ -20,6 +20,6 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
 
         repository.delete(3);
 
-        // System.out.println(repository.select(2));
+        System.out.println(repository.select(2));
     }
 }
