@@ -3,7 +3,10 @@
     <title>Welcome</title>
 </head>
 <body>
-    <div>Hello, Welcome to my site</div>
-    <div>${username} ${userpassword}</div>
+<div class="container">
+    <div>Hello, Welcome to my site ${username}</div>
+    <hr/>
+    <div><a href="todo-list">Your Todo List</a></div>
+</div>
 </body>
 </html>
