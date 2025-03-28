@@ -1,5 +1,6 @@
 package com.learning.rest.webservices.restful_web_services.dao;
 
+import com.learning.rest.webservices.restful_web_services.controllers.UserNotFoundException;
 import com.learning.rest.webservices.restful_web_services.controllers.Users;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,15 @@ public class UserDaoService {
 
     public Users findOne(int id) {
         return usersList.stream().filter(user -> user.id() == id).findFirst().orElse(null);
+    }
+
+    public void deleteUser(int id) {
+        Users user = findOne(id);
+        if(user == null) {
+            throw new UserNotFoundException("User not found with id: " + id);
+        } else {
+            usersList.remove(user);
+        }
+
     }
 }
