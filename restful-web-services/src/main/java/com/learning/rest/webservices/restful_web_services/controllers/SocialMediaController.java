@@ -40,10 +40,10 @@ public class SocialMediaController {
         return userDaoService.save(user);
     }
 
-    @DeleteMapping(value="users")
-    public void deleteUsers(@RequestBody int id) {
-        userDaoService.deleteUser(id);
-    }
+//    @DeleteMapping(value="users")
+//    public void deleteUsers(@RequestBody int id) {
+//        userDaoService.deleteUser(id);
+//    }
 
 
 
