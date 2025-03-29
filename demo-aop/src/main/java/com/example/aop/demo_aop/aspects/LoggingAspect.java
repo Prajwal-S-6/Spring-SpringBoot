@@ -13,12 +13,12 @@ public class LoggingAspect {
 
    private Logger LOG = LoggerFactory.getLogger(getClass());
 
-   @Before("execution(* com.example.aop.demo_aop.*.*.*(..))")
+   @Before("com.example.aop.demo_aop.aspects.CommonPointcutConfig.commonConfigUsingBeans()")
    public void logMethodCallBefore(JoinPoint joinPoint) {
        LOG.info("Before Aspect- {} is called with argument: {}", joinPoint, joinPoint.getArgs());
    }
 
-    @After("execution(* com.example.aop.demo_aop.*.*.*(..))")
+    @After("com.example.aop.demo_aop.aspects.CommonPointcutConfig.commonConfig()")
 //    @AfterThrowing("execution(* com.example.aop.demo_aop.*.*.*(..))", throwing="execution)
 //    @AfterReturning(value = "execution(* com.example.aop.demo_aop.*.*.*(..))", returning = "returnvalue")
     public void logMethodCallAfter(JoinPoint joinPoint) {

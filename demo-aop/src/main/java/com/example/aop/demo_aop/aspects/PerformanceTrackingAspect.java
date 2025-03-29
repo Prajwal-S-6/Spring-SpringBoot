@@ -1,7 +1,6 @@
-package com.example.aop.demo_aop.performance;
+package com.example.aop.demo_aop.aspects;
 
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class PerformanceTrackingAspect {
     private Logger LOG = LoggerFactory.getLogger(getClass());
 
-    @Around("execution(* com.example.aop.demo_aop.*.*.*(..))")
+    @Around("com.example.aop.demo_aop.aspects.CommonPointcutConfig.commonConfigUsingAnnotation()")
     public Object findExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         //start timer
         long startTime = System.currentTimeMillis();
