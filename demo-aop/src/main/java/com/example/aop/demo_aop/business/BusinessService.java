@@ -12,7 +12,7 @@ public class BusinessService {
     @Autowired
     private DataService dataService;
     
-    public int calculateMax() {
+    public int calculateMax() throws InterruptedException {
         int[] data = dataService.retrieveData();
 
 //        throw new RuntimeException("Something went wrong");

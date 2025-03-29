@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataService {
 
-    public int[] retrieveData() {
+    public int[] retrieveData() throws InterruptedException {
+        Thread.sleep(30);
         return new int[]{11, 22, 33};
     }
 }
