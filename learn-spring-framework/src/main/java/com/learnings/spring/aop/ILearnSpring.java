@@ -1,6 +1,6 @@
 package com.learnings.spring.aop;
 
-public interface IAop {
+public interface ILearnSpring {
 
     void method1();
 

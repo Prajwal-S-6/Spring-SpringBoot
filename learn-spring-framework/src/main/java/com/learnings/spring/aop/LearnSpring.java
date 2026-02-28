@@ -30,7 +30,7 @@ class Person {
 }
 
 @Component
-public class LearnSpringAOP implements IAop {
+public class LearnSpring implements ILearnSpring {
 
     public void method1() {
         System.out.println("Method1");
