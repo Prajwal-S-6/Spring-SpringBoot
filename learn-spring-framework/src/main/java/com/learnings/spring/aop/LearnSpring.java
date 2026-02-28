@@ -12,7 +12,8 @@ public class LearnSpring implements ILearnSpring {
         return 1;
     }
 
-    public void method3(int arg1) {
+    public int method3(int arg1) {
+        return arg1;
     }
 
     public void method4(Person arg1) {

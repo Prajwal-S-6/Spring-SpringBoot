@@ -11,6 +11,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     private LearnSpring learnSpring;
 
+    @Autowired
+    private Person person; // use Spring-managed Person bean so AOP can proxy it
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -22,6 +25,7 @@ public class Application implements CommandLineRunner {
         learnSpring.method3(2);
         learnSpring.method4(new Person());
         learnSpring.method5(new Person());
-        new Person().personClassMethod();
+        // call the Spring-managed bean so AOP advice is applied
+        person.personClassMethod();
     }
 }
