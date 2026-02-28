@@ -14,6 +14,6 @@ public class AOP {
 
     @Before("execution(public void com.learnings.spring.aop.LearnSpring.*(..))")
     public void methodA(){
-        logger.info("Before method");
+        logger.info("AOP -------------> Before method");
     }
 }

@@ -1,0 +1,27 @@
+package com.learnings.spring.aop;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    private LearnSpring learnSpring;
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        learnSpring.method1();
+        learnSpring.method2();
+        learnSpring.method3(2);
+        learnSpring.method4(new Person());
+        learnSpring.method5(new Person());
+        new Person().personClassMethod();
+    }
+}
