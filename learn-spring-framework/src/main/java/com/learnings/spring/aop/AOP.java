@@ -1,5 +1,6 @@
 package com.learnings.spring.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ public class AOP {
     private static final Logger logger = LoggerFactory.getLogger(AOP.class);
 
     @Before("execution(public void com.learnings.spring.aop.LearnSpring.*(..))")
-    public void methodA(){
-        logger.info("AOP -------------> Before method");
+    public void methodA(JoinPoint joinPoint){
+        logger.info("AOP -------------> Before method {}", joinPoint.getSignature().toShortString());
     }
 }
