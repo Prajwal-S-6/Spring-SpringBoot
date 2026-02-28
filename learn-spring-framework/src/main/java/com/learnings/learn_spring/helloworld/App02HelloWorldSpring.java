@@ -4,11 +4,13 @@ package com.learnings.learn_spring.helloworld;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.Arrays;
 
 @Configuration
-@ComponentScan("com.learnings.learn_spring.helloworld")
+@ComponentScan({"com.learnings.learn_spring.helloworld", "com.learnings.spring.aop"})
+@EnableAspectJAutoProxy
 public class App02HelloWorldSpring {
 
     public static void main(String[] args) {
