@@ -79,6 +79,11 @@ public class AOP {
 
     @After("within(*..*.LearnSpring) && @args(SomeAnnotation)")
     public void methodI(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    @After("within(com.learnings..*) && @target(org.springframework.scheduling.annotation.Async)")
+    public void methodJ(JoinPoint joinPoint) {
         logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
