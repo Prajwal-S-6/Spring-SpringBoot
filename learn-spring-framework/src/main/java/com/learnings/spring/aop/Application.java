@@ -23,12 +23,16 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        learnSpring.method1();
-        learnSpring.method2();
-        learnSpring.method3(2);
-        learnSpring.method4(person);
-        learnSpring.method5(person);
-        // call the Spring-managed bean so AOP advice is applied
-        person.personClassMethod();
+        try {
+            learnSpring.method1();
+            learnSpring.method2();
+            learnSpring.method3(2);
+            learnSpring.method4(person);
+            learnSpring.method5(person);
+            // call the Spring-managed bean so AOP advice is applied
+            person.personClassMethod();
+        } catch (Exception e) {
+
+        }
     }
 }

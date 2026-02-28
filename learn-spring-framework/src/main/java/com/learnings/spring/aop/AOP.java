@@ -11,6 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /*
+Advice -
+@Around
+@Before
+@AfterReturning
+@AfterThrowing
+ */
+
+/*
 Pointcut expressions -
 
 execution
@@ -24,7 +32,6 @@ bean
 @within
 @args
 @target
-
  */
 @Aspect
 @Component
@@ -42,9 +49,9 @@ public class AOP {
         //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
-    @AfterReturning("execution(* *..*.LearnSpring.*(..)) && args(int)")
-    public void methodC(JoinPoint joinPoint) {
-        //logger.info("AOP -------------> After returning method {}", joinPoint.getSignature().toShortString());
+    @AfterReturning(value = "execution(* *..*.LearnSpring.*(..)) && args(int)", returning = "returnValue")
+    public void methodC(JoinPoint joinPoint, Object returnValue) {
+        logger.info("AOP -------------> After returning method {}, with return value: {}", joinPoint.getSignature().toShortString(), returnValue);
     }
 
     //@After("this(LearnSpring)")
@@ -84,8 +91,10 @@ public class AOP {
 
     @After("within(com.learnings..*) && @target(org.springframework.scheduling.annotation.Async)")
     public void methodJ(JoinPoint joinPoint) {
-        logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
+
+
 
 
 }

@@ -23,6 +23,7 @@ public class LearnSpring implements ILearnSpring {
 
     @SomeAnnotation2
     public void method5(Person arg1) {
+        throw new IllegalArgumentException();
     }
 
 }
