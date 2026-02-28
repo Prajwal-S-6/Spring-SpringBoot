@@ -10,6 +10,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/*
+Pointcut expressions -
+
+execution
+within
+args
+this
+target
+bean
+
+@annotation
+@within
+@args
+@target
+
+ */
 @Aspect
 @Component
 public class AOP {
@@ -36,6 +52,23 @@ public class AOP {
     // so LearnSpring wont match
     @After("this(ILearnSpring)")
     public void methodD(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    //@After("target(ILearnSpring)") //this works with target
+    @After("target(LearnSpring)")
+    public void methodE(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    //@After("bean(PersonBean)")
+    @After("bean(person)") // class name is matched default naming convention class name first letter is lower case
+    public void methodF(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    @After("@annotation(SomeAnnotation2)") // class name is matched default naming convention class name first letter is lower case
+    public void methodG(JoinPoint joinPoint) {
         logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
