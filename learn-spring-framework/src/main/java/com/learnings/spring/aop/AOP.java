@@ -1,6 +1,7 @@
 package com.learnings.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
 import org.slf4j.Logger;
@@ -92,13 +93,21 @@ public class AOP {
     }
 
     @AfterReturning(value = "execution(* *..*.LearnSpring.*(..)) && args(int)", returning = "returnValue")
-    public void methodC(JoinPoint joinPoint, Object returnValue) {
+    public void methodK(JoinPoint joinPoint, Object returnValue) {
         //logger.info("AOP -------------> After returning method {}, with return value: {}", joinPoint.getSignature().toShortString(), returnValue);
     }
 
     @AfterThrowing(value = "execution(* *..*.LearnSpring.*(..))", throwing = "exceptionThrown")
-    public void methodC(JoinPoint joinPoint, Exception exceptionThrown) {
-        logger.info("AOP -------------> After throwing {}, with exception: {}", joinPoint.getSignature().toShortString(), exceptionThrown.toString());
+    public void methodL(JoinPoint joinPoint, Exception exceptionThrown) {
+        //logger.info("AOP -------------> After throwing {}, with exception: {}", joinPoint.getSignature().toShortString(), exceptionThrown.toString());
+    }
+
+    @Around("execution(public * com.learnings..*.LearnSpring.*(..))")
+    public Object methodM(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        logger.info("AOP -------------> Around before {}", proceedingJoinPoint.getSignature().toShortString());
+        Object result = proceedingJoinPoint.proceed();
+        logger.info("AOP -------------> Around after {}", proceedingJoinPoint.getSignature().toShortString());
+        return result;
     }
 
 
