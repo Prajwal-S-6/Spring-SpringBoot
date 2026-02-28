@@ -28,6 +28,16 @@ public class AOP {
 
     @AfterReturning("execution(* *..*.LearnSpring.*(..)) && args(int)")
     public void methodC(JoinPoint joinPoint) {
-        logger.info("AOP -------------> After returning method {}", joinPoint.getSignature().toShortString());
+        //logger.info("AOP -------------> After returning method {}", joinPoint.getSignature().toShortString());
     }
+
+    //@After("this(LearnSpring)")
+    // since jdk proxy is enabled during proxy spring creates another class on type ILearnSpring,
+    // so LearnSpring wont match
+    @After("this(ILearnSpring)")
+    public void methodD(JoinPoint joinPoint) {
+        logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+
 }

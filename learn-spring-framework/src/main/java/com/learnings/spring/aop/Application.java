@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = AopAutoConfiguration.class)
+@EnableAspectJAutoProxy(proxyTargetClass = false)
 public class Application implements CommandLineRunner {
 
     @Autowired
-    private LearnSpring learnSpring;
+    private ILearnSpring learnSpring;
 
     @Autowired
     private Person person; // use Spring-managed Person bean so AOP can proxy it
