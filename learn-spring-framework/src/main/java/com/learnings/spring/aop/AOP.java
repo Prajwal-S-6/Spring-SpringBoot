@@ -67,8 +67,18 @@ public class AOP {
         //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
-    @After("@annotation(SomeAnnotation2)") // class name is matched default naming convention class name first letter is lower case
+    @After("@annotation(SomeAnnotation2)")
     public void methodG(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    @After("@within(SomeAnnotation)")
+    public void methodH(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
+    }
+
+    @After("within(*..*.LearnSpring) && @args(SomeAnnotation)")
+    public void methodI(JoinPoint joinPoint) {
         logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 

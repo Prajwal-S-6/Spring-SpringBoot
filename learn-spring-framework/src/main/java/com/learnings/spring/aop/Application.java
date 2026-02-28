@@ -26,8 +26,8 @@ public class Application implements CommandLineRunner {
         learnSpring.method1();
         learnSpring.method2();
         learnSpring.method3(2);
-        learnSpring.method4(new Person());
-        learnSpring.method5(new Person());
+        learnSpring.method4(person);
+        learnSpring.method5(person);
         // call the Spring-managed bean so AOP advice is applied
         person.personClassMethod();
     }
