@@ -1,11 +1,8 @@
 package com.learnings.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.*;
 
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -49,9 +46,9 @@ public class AOP {
         //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
-    @AfterReturning(value = "execution(* *..*.LearnSpring.*(..)) && args(int)", returning = "returnValue")
-    public void methodC(JoinPoint joinPoint, Object returnValue) {
-        logger.info("AOP -------------> After returning method {}, with return value: {}", joinPoint.getSignature().toShortString(), returnValue);
+    @After(value = "execution(* *..*.LearnSpring.*(..)) && args(int)")
+    public void methodC(JoinPoint joinPoint) {
+        //logger.info("AOP -------------> After returning method {}, with return value: {}", joinPoint.getSignature().toShortString());
     }
 
     //@After("this(LearnSpring)")
@@ -94,6 +91,15 @@ public class AOP {
         //logger.info("AOP -------------> After method {}", joinPoint.getSignature().toShortString());
     }
 
+    @AfterReturning(value = "execution(* *..*.LearnSpring.*(..)) && args(int)", returning = "returnValue")
+    public void methodC(JoinPoint joinPoint, Object returnValue) {
+        //logger.info("AOP -------------> After returning method {}, with return value: {}", joinPoint.getSignature().toShortString(), returnValue);
+    }
+
+    @AfterThrowing(value = "execution(* *..*.LearnSpring.*(..))", throwing = "exceptionThrown")
+    public void methodC(JoinPoint joinPoint, Exception exceptionThrown) {
+        logger.info("AOP -------------> After throwing {}, with exception: {}", joinPoint.getSignature().toShortString(), exceptionThrown.toString());
+    }
 
 
 
