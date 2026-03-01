@@ -22,6 +22,9 @@ public class Main implements CommandLineRunner {
 //    @Autowired
 //    private PrototypeBean prototypeBean2;
 
+    @Autowired
+    private ProfileBean profileBean;
+
     static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
@@ -35,6 +38,6 @@ public class Main implements CommandLineRunner {
 //        System.out.println(prototypeBean2);
 
         //singletonBean1.doSomething();
-
+        System.out.println(profileBean);
     }
 }
