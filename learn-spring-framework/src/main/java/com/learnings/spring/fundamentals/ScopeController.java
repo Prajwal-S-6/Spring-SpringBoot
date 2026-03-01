@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ScopeController {
 
-    private final BeanC beanC;
-    private final BeanD beanD;
+    private final RequestScopeBean requestScopeBean;
+    private final SessionScopeBean sessionScopeBean;
+    private final ApplicationScopeBean applicationScopeBean;
 
-    public ScopeController(BeanC beanC, BeanD beanD) {
-        this.beanC = beanC;
-        this.beanD = beanD;
+    public ScopeController(RequestScopeBean requestScopeBean, SessionScopeBean sessionScopeBean, ApplicationScopeBean applicationScopeBean) {
+        this.requestScopeBean = requestScopeBean;
+        this.sessionScopeBean = sessionScopeBean;
+        this.applicationScopeBean = applicationScopeBean;
     }
 
     @GetMapping("/scope")
     public String methodA() {
         return String.format("RequestScope: %s\n Session Scope: %s\n Application Scope: %s",
-                this.beanC.toString(), this.beanD.toString(),"");
+                this.requestScopeBean.toString(), this.sessionScopeBean.toString(),this.applicationScopeBean.toString());
     }
 }
