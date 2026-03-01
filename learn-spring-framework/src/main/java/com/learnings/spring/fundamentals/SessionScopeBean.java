@@ -5,5 +5,5 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @SessionScope
-public class BeanD {
+public class SessionScopeBean {
 }
