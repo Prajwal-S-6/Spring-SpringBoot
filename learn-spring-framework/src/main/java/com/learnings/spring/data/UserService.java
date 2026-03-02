@@ -3,11 +3,16 @@ package com.learnings.spring.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private UserDaoJpa userDaoJpa;
 
     public User getUserData() {
         return userDao.getUsers().getFirst();
@@ -15,5 +20,9 @@ public class UserService {
 
     public int getUsersCount() {
         return userDao.getCount();
+    }
+
+    public List<User> getAllUsers() {
+        return userDaoJpa.findAll();
     }
 }
