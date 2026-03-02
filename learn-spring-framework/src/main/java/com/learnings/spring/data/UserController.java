@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/data")
 public class UserController {
@@ -16,14 +18,19 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<User> getUser() {
+    public ResponseEntity<Users> getUser() {
         return ResponseEntity.ok(userService.getUserData());
     }
 
     @GetMapping("/count")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     public Integer getUsersCount() {
         return userService.getUsersCount();
+    }
+
+    @GetMapping("/allUsers")
+    public ResponseEntity<List<Users>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
 }
