@@ -14,7 +14,7 @@ public class UserService {
     @Autowired
     private UserDaoJpa userDaoJpa;
 
-    public User getUserData() {
+    public Users getUserData() {
         return userDao.getUsers().getFirst();
     }
 
@@ -22,7 +22,7 @@ public class UserService {
         return userDao.getCount();
     }
 
-    public List<User> getAllUsers() {
+    public List<Users> getAllUsers() {
         return userDaoJpa.findAll();
     }
 }
