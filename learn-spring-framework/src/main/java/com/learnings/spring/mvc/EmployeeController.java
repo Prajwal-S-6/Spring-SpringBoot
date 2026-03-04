@@ -29,4 +29,9 @@ public class EmployeeController {
         return ResponseEntity.created(UriComponentsBuilder.fromUriString("/api/employee/{savedEmpId}").build(savedEmpId)).build();
     }
 
+    @PutMapping("employee/{empId}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("empId") Integer id, @RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+    }
+
 }
