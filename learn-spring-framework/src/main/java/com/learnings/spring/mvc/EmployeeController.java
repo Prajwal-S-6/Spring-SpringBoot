@@ -1,6 +1,8 @@
 package com.learnings.spring.mvc;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponents;
@@ -44,6 +46,11 @@ public class EmployeeController {
     public ResponseEntity<Void> deleteEmployee(@RequestParam Integer id) {
         employeeService.deleteEmployeeById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<String> employeeNotFound() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Employee not found");
     }
 
 }
