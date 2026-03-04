@@ -30,4 +30,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
+    @GetMapping("user/{name}")
+    public ResponseEntity<Users> getUserByName(@PathVariable String name) {
+        return ResponseEntity.ok(userService.getUsersByName(name));
+    }
+
 }
