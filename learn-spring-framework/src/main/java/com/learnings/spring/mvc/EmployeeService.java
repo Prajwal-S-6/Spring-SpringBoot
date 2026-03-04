@@ -15,4 +15,9 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeDao.findAll();
     }
+
+    public Integer addEmployee(Employee employee) {
+        Employee savedEmployee = employeeDao.save(employee);
+        return savedEmployee.id;
+    }
 }
