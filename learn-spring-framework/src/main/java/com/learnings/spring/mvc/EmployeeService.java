@@ -1,5 +1,6 @@
 package com.learnings.spring.mvc;
 
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +20,12 @@ public class EmployeeService {
     public Integer addEmployee(Employee employee) {
         Employee savedEmployee = employeeDao.save(employee);
         return savedEmployee.id;
+    }
+
+    public Employee updateEmployee(Integer empId, Employee employee) {
+        Employee existingEmployee = employeeDao.findById(empId).orElseThrow(RuntimeException::new);
+        existingEmployee.setSalary(employee.getSalary());
+        existingEmployee.setName(employee.getName());
+        return employeeDao.save(existingEmployee);
     }
 }
