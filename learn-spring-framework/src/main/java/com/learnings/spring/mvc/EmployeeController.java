@@ -1,5 +1,6 @@
 package com.learnings.spring.mvc;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponents;
@@ -32,6 +33,17 @@ public class EmployeeController {
     @PutMapping("employee/{empId}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("empId") Integer id, @RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+    }
+
+    @PatchMapping("/employee")
+    public ResponseEntity<Employee> updateSalary(@RequestParam("id") Integer id, @RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.updateSalary(id, employee));
+    }
+
+    @DeleteMapping("employee")
+    public ResponseEntity<Void> deleteEmployee(@RequestParam Integer id) {
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
