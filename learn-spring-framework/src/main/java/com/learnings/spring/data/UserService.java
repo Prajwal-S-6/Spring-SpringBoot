@@ -28,6 +28,10 @@ public class UserService {
         return userDaoJpa.findAll();
     }
 
+    public Users getUsersByName(String name) {
+        return userDaoJpa.findByName(name);
+    }
+
     @Transactional
     public void noRollbackForCheckedException() throws SQLException {
         throw new SQLException();
