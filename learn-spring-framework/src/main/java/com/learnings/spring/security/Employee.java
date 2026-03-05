@@ -17,4 +17,8 @@ public class Employee {
     public String name;
 
     public Integer salary;
+
+    public String password;
+
+    public String role;
 }
