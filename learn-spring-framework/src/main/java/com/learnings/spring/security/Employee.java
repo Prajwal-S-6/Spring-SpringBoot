@@ -18,6 +18,7 @@ public class Employee {
 
     public Integer salary;
 
+    @JsonIgnore
     public String password;
 
     public String role;
