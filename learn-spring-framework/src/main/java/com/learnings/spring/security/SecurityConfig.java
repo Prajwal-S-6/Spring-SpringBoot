@@ -15,13 +15,16 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.authorizeHttpRequests(auth ->
-                auth.requestMatchers(HttpMethod.GET, "api/employee").hasAnyRole("ADMIN", "USER"))
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth ->
+                auth.requestMatchers(HttpMethod.GET, "api/employee").hasAnyRole("ADMIN", "USER")
+                        .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }

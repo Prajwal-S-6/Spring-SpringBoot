@@ -27,7 +27,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping("/employee")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) {
         Integer savedEmpId = employeeService.addEmployee(employee);
