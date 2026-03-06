@@ -31,4 +31,11 @@ class EmployeeServiceTest {
         assertThat(employees.getFirst().getName()).isEqualTo("A");
 
     }
+
+    @Test
+    public void shouldThrowEmployeeNotFoundExceptionWhenDeleteingNotExistingEmployee() {
+        Mockito.doThrow(EmployeeNotFoundException.class).when(employeeDao).delete(Mockito.any());
+
+        assertThrows(EmployeeNotFoundException.class, () -> employeeService.deleteEmployeeById(1));
+    }
 }
