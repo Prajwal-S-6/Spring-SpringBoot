@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS employee;
 create table employee
 (
     id integer,
