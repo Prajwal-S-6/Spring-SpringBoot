@@ -42,7 +42,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.updateSalary(id, employee));
     }
 
-    @DeleteMapping("employee")
+    @DeleteMapping("/employee")
     public ResponseEntity<Void> deleteEmployee(@RequestParam Integer id) {
         employeeService.deleteEmployeeById(id);
         return ResponseEntity.noContent().build();
