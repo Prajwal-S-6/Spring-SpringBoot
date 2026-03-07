@@ -14,7 +14,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,6 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -30,6 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Sql({"/schema.sql", "/data.sql"})
+@ComponentScan(basePackages = "com.learnings.spring.mvc")
 class EmployeeController2Test {
 
     @LocalServerPort
@@ -55,6 +58,14 @@ class EmployeeController2Test {
         assertThat(response.getBody().size()).isEqualTo(2);
         assertThat(response.getBody().stream().map(Employee::getName).toList())
                 .isEqualTo(List.of("e1", "e2"));
+    }
+
+    @Test
+    public void shouldThrowEmployeeNotFoundWhenDeletingInvalidEmployee() {
+        ResponseEntity<Void> response = restTemplate.withBasicAuth("admin", "password")
+                .exchange(url + "/api/employee?id=6", HttpMethod.DELETE, null,
+                        Void.class);
+        assertThat(response.getStatusCode()).isEqualTo(BAD_REQUEST);
     }
 
 
