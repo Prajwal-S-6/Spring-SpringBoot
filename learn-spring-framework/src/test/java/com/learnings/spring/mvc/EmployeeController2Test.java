@@ -15,6 +15,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
@@ -26,8 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ComponentScan(basePackages = "com.learnings.spring.mvc")
-@AutoConfigureMockMvc(addFilters = false)
+@Sql({"/schema.sql", "/data.sql"})
 class EmployeeController2Test {
 
     @LocalServerPort
@@ -49,7 +49,6 @@ class EmployeeController2Test {
                 .withBasicAuth("user", "password")
                 .exchange(url + "/api/employee", HttpMethod.GET,null,
                 new ParameterizedTypeReference<List<Employee>>() {});
-        System.out.println(response.getStatusCode());
 
     }
 
